@@ -24,7 +24,7 @@ RUN tar xzvf ${nginxVersion}.tar.gz
 
 WORKDIR ${nginxVersion}
 
-RUN ./configure --add-module=${nginxPush}
+RUN ./configure --add-module=${nginxPush} --with-http_ssl_module
 RUN make
 RUN make install
 
