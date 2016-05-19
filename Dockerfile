@@ -6,12 +6,12 @@ ENV nginxVersion nginx-1.9.11
 # Init
 RUN apt-get update
 RUN apt-get install --yes build-essential \
-													wget \
-                       	  libpcre3-dev \
-                       	  zlib1g-dev \
-													libcurl4-openssl-dev \
-                    			libncurses5-dev \
-                    			unzip
+			wget \
+             		libpcre3-dev \
+			zlib1g-dev \
+			libcurl4-openssl-dev \
+                    	libncurses5-dev \
+                    	unzip
 
 RUN wget https://github.com/wandenberg/nginx-push-stream-module/archive/master.zip
 RUN unzip master.zip
@@ -22,7 +22,7 @@ RUN tar xzvf ${nginxVersion}.tar.gz
 
 WORKDIR ${nginxVersion}
 
-RUN ./configure --add-module=${nginxPush}
+RUN ./configure --add-module=${nginxPush} –with-http_ssl_module
 RUN make
 RUN make install
 
